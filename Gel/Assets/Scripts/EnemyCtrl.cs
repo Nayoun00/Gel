@@ -28,7 +28,8 @@ public class EnemyCtrl : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
+           other.GetComponent<PlayerCtrl>().GetDmg(1);
+            Destroy(this.gameObject);
         }
     }
 }

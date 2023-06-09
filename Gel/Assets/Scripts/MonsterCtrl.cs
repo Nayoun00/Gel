@@ -7,8 +7,11 @@ using UnityEngine;
 public class MonsterCtrl : MonoBehaviour
 {
     public int hp = 5;
-    public float LeftTimer = 0.5f;
+    public float LeftTimer = 2.0f;
     public bool isLeft = false;
+    public float nextFireTime;
+    public float fireRate = 1.0f;
+    public GameObject bullet;
 
     Rigidbody2D rb;
     [SerializeField]
@@ -16,9 +19,11 @@ public class MonsterCtrl : MonoBehaviour
 
     private void Start()
     {
+        bullet = Resources.Load("Monster_B") as GameObject;
         int LorR = Random.Range(0, 2);
         if (LorR == 0) isLeft = true;
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
         rb = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
@@ -41,12 +46,12 @@ public class MonsterCtrl : MonoBehaviour
     {
         float speed = manager.speed;
         rb.velocity = new Vector2(rb.velocity.x, speed);
-            
-        if(this.transform.position.y < -14)
+
+        if (this.transform.position.y < -14)
         {
             Destroy(this.gameObject);
         }
-        if(isLeft == true)
+        if (isLeft == true)
         {
             rb.velocity = new Vector2(-2, rb.velocity.y);
         }
@@ -54,9 +59,18 @@ public class MonsterCtrl : MonoBehaviour
         {
             rb.velocity = new Vector2(2, rb.velocity.y);
         }
+        if(this.gameObject.tag == "BadAssMonster")
+        {
+            if (Time.time > nextFireTime)
+            {
+                nextFireTime = Time.time + 1.0f / fireRate;
+                GameObject B3 = (GameObject)Instantiate(bullet);
+                B3.transform.position = this.gameObject.transform.position;
+            }
+        }
     }
 
-    public void GetDmg(int d)
+            public void GetDmg(int d)
     {
         hp -= d;
         if (hp <= 0)

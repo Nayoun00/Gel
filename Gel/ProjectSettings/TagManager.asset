@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
-  - S_T1
+  - BadAssMonster
   layers:
   - Default
   - TransparentFX

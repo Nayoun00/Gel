@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6479375551961157617}
   m_Layer: 0
   m_Name: galage_1_13
-  m_TagString: Monster
+  m_TagString: BadAssMonster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,9 @@ MonoBehaviour:
   hp: 5
   LeftTimer: 0.5
   isLeft: 0
+  nextFireTime: 0
+  fireRate: 1
+  bullet: {fileID: 0}
   manager: {fileID: 0}
 --- !u!58 &6479375551961157617
 CircleCollider2D:
