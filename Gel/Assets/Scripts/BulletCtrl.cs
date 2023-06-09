@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
@@ -7,7 +5,7 @@ public class BulletCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,11 +17,17 @@ public class BulletCtrl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Monster") 
+        if (other.gameObject.tag == "Monster")
         {
-            other.GetComponent<MonsterCtlr>().GetDmg(1);
+            other.GetComponent<MonsterCtrl>().GetDmg(1);
             Destroy(this.gameObject);
         }
     }
-
+    private void Update()
+    {
+        if (this.transform.position.y > 50)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

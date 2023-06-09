@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class MonsterCtlr : MonoBehaviour
+public class EnemyCtrl : MonoBehaviour
 {
-    public int hp = 5;
     Rigidbody2D rb;
     [SerializeField]
     GameManager manager;
@@ -15,24 +13,22 @@ public class MonsterCtlr : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
-        rb.velocity = new Vector2(rb.velocity.x, -1);
+        float speed = manager.speed*2;
+        rb.velocity = new Vector2(rb.velocity.x, speed);
 
-
-        if(this.transform.position.y < -8)
+        if (this.transform.position.y < -14)
         {
             Destroy(this.gameObject);
         }
     }
-
-    public void GetDmg(int d)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        hp -= d;
-        if (hp <= 0)
+        if (other.gameObject.tag == "Player")
         {
-            manager.count++;
-            Destroy(this.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
