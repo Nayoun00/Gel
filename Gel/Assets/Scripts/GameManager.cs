@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
             case 3:
                 speed -= 0.7f;
                 break;
-            case 4:
-                MoveScene("Play2");
+            case 10:
+                MoveScene("Clear");
                 break;
 
         }

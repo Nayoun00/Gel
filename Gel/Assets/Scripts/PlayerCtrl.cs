@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
@@ -9,10 +10,16 @@ public class PlayerCtrl : MonoBehaviour
     public int hp = 3;
 
 
+
     private Object[] Bullet;
     private GameObject Bullet1, Bullet2, Bullet3, Bullet4;
+    GameManager manager;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,7 +74,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetDmg(int d)
     {
-        if (hp > 0)
+        if (hp >= 0)
         {
             hp -= d;
         }
@@ -79,7 +86,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void PlayerDie()
     {
-
+        manager.MoveScene("Die");
     }
 
 
