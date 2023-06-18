@@ -9,7 +9,7 @@ public class BackgroundScrolling : MonoBehaviour
     [SerializeField]
     GameManager manager;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -17,7 +17,7 @@ public class BackgroundScrolling : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+
     void Update()
     {
         float speed = manager.speed * 2;

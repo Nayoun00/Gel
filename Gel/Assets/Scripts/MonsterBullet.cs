@@ -6,7 +6,7 @@ public class MonsterBullet : MonoBehaviour
 {
     void FixedUpdate()
     {
-        float moveAmount = -7 * Time.fixedDeltaTime;
+        float moveAmount = -15 * Time.fixedDeltaTime;
         transform.Translate(Vector2.down * moveAmount);
     }
 

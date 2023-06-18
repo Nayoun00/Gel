@@ -28,8 +28,8 @@ public class MonsterCtrl : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        LeftTimer-= Time.fixedDeltaTime;
-        if(LeftTimer <= 0 )
+        LeftTimer -= Time.fixedDeltaTime;
+        if (LeftTimer <= 0)
         {
             if (isLeft == false)
             {
@@ -59,7 +59,7 @@ public class MonsterCtrl : MonoBehaviour
         {
             rb.velocity = new Vector2(2, rb.velocity.y);
         }
-        if(this.gameObject.tag == "BadAssMonster")
+        if (this.gameObject.tag == "BadAssMonster")
         {
             if (Time.time > nextFireTime)
             {
@@ -70,7 +70,7 @@ public class MonsterCtrl : MonoBehaviour
         }
     }
 
-            public void GetDmg(int d)
+    public void GetDmg(int d)
     {
         hp -= d;
         if (hp <= 0)

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4536687364313273229}
   m_Layer: 0
   m_Name: galage_1_10
-  m_TagString: BadAssMonster
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
